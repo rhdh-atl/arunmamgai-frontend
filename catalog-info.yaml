@@ -1,0 +1,48 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: arunmamgai-poi-map-app-dev
+  annotations:
+    argocd/app-name: arunmamgai-poi-map-app-dev
+    backstage.io/kubernetes-id: arunmamgai-poi-map-app
+    backstage.io/kubernetes-namespace: arunmamgai
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: rhdh-atl/arunmamgai-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.j0i9yf30.eastus2.aroapp.io/dev-pipelines/ns/arunmamgai/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.j0i9yf30.eastus2.aroapp.io/k8s/ns/arunmamgai/deployments/arunmamgai-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.j0i9yf30.eastus2.aroapp.io/#https://github.com/rhdh-atl/arunmamgai-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://arunmamgai-poi-map-app-arunmamgai.apps.j0i9yf30.eastus2.aroapp.io
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "arunmamgai"
+  system: workshop-system-arunmamgai
+  consumesApis:
+    - gateway-api-arunmamgai
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-arunmamgai
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "arunmamgai"
